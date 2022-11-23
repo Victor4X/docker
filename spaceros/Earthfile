@@ -100,6 +100,7 @@ sources:
 workspace:
   FROM +setup
   COPY src src/
+  SAVE ARTIFACT src
 
 vcs-exact:
   FROM +workspace
@@ -126,6 +127,7 @@ build-testing:
   COPY +vcs-exact/exact.repos install/exact.repos
   SAVE ARTIFACT log/build_results_archives/build_results*.tar.bz2 AS LOCAL spaceros_ws/log/build_results_archives/
   SAVE ARTIFACT install AS LOCAL install
+  SAVE ARTIFACT build
 
 image:
   FROM +rosdep
